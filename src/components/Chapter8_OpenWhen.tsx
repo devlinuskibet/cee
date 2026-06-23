@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { openWhenLetters } from '../resources/content';
-import { Mail, X } from 'lucide-react';
-import { cn } from '../utils/cn';
+import { Mail, X, Heart } from 'lucide-react';
 
 type LetterKey = keyof typeof openWhenLetters;
 

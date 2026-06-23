@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { MusicController } from './components/MusicController';
 import { MouseGlow } from './components/MouseGlow';
 import { useGameStore } from './store/useGameStore';
@@ -66,7 +66,7 @@ function App() {
       {/* Secret click layer for finding hidden stars randomly */}
       <div 
         className="fixed inset-0 z-[-1]" 
-        onClick={(e) => {
+        onClick={() => {
           if (Math.random() > 0.95) {
             incrementStarsFound();
             useGameStore.getState().unlockMessage(shortMessages[0]); // You found a secret

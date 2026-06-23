@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { images } from '../resources/images';
 import { X } from 'lucide-react';
-import { cn } from '../utils/cn';
+
 
 const memoryTexts = [
   "A perfect moment frozen in time ✨",
