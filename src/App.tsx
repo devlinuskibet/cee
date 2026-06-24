@@ -92,10 +92,8 @@ function App() {
         <section id="chapter2"><Chapter2_FirstPage /></section>
         <section id="chapter3"><Chapter3_MemoryGalaxy /></section>
         
-        {/* Quests are placed strategically to track progress so far */}
-        <div className="fixed top-24 right-0 z-40 scale-75 md:scale-100 origin-top-right pointer-events-none">
-          <Chapter4_LoveQuests />
-        </div>
+        {/* Quests are fixed globally via the component itself */}
+        <Chapter4_LoveQuests />
 
         <section id="chapter5"><Chapter5_DateAdventure /></section>
         <section id="chapter6"><Chapter6_MoonInvitation /></section>
