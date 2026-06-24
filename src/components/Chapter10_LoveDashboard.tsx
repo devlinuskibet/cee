@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Clock, Calendar, HeartPulse, Award } from 'lucide-react';
 import { useGameStore } from '../store/useGameStore';
+import { HiddenHeart } from './HiddenHeart';
 
 const START_DATE = new Date('2019-04-08T00:00:00');
 
@@ -32,7 +33,8 @@ export const Chapter10_LoveDashboard: React.FC = () => {
   ];
 
   return (
-    <div className="w-full min-h-[80vh] py-24 px-4 flex flex-col items-center justify-center">
+    <div className="w-full min-h-[80vh] py-24 px-4 flex flex-col items-center justify-center relative">
+      <HiddenHeart className="bottom-10 left-1/4 md:bottom-20 md:left-40" />
       <div className="text-center mb-16 z-10">
         <p className="text-primary/80 uppercase tracking-[0.3em] text-xs font-bold mb-2">Chapter 10</p>
         <h2 className="text-4xl md:text-5xl font-display font-bold text-gradient mb-4">Love Dashboard</h2>

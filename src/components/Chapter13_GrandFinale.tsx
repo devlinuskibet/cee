@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { HiddenHeart } from './HiddenHeart';
 
 export const Chapter13_GrandFinale: React.FC = () => {
   const [finished, setFinished] = useState(false);
 
   return (
     <div className="min-h-screen py-24 px-4 relative flex flex-col items-center justify-center overflow-hidden border-t border-white/5">
+      <HiddenHeart className="top-10 left-10 md:top-20 md:left-20" />
       
       {/* Background massive glowing moon */}
       <motion.div 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Heart, Navigation } from 'lucide-react';
 import { cn } from '../utils/cn';
+import { HiddenHeart } from './HiddenHeart';
 
 const futureDreams = [
   "Travel the world together",
