@@ -2,19 +2,13 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { openWhenLetters } from '../resources/content';
 import { Mail, X, Heart } from 'lucide-react';
+import { useGameStore } from '../store/useGameStore';
 
 type LetterKey = keyof typeof openWhenLetters;
 
-const envelopes: { id: LetterKey, title: string }[] = [
-  { id: 'sad', title: "Open when you're sad" },
-  { id: 'missMe', title: "Open when you miss me" },
-  { id: 'stressed', title: "Open when you're stressed" },
-  { id: 'motivation', title: "Open when you need motivation" },
-  { id: 'smile', title: "Open when you need a smile" }
-];
-
 export const Chapter8_OpenWhen: React.FC = () => {
   const [openedLetter, setOpenedLetter] = useState<LetterKey | null>(null);
+  const { secretLetterFound, unlockMessage, findSecretLetter } = useGameStore();
 
   return (
     <div className="w-full min-h-screen py-24 px-4 flex flex-col items-center justify-center">
@@ -24,27 +18,46 @@ export const Chapter8_OpenWhen: React.FC = () => {
         <p className="text-white/60">Sealed glass envelopes for when you need them most.</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl w-full">
-        {envelopes.map((env, idx) => (
-          <motion.div
-            key={env.id}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: idx * 0.1 }}
-            onClick={() => setOpenedLetter(env.id)}
-            className="group cursor-pointer relative perspective-1000"
-            style={{ transformStyle: 'preserve-3d' }}
-          >
-            <motion.div 
-              whileHover={{ rotateX: 10, rotateY: -10, z: 20 }}
-              className="glass-card p-8 flex flex-col items-center justify-center text-center h-48 border-white/30 bg-white/5 hover:bg-white/10 transition-colors"
+      <div className="flex flex-wrap justify-center gap-6 mt-12 max-w-5xl mx-auto relative">
+        {Object.keys(openWhenLetters).map((key, index) => {
+          if (key === 'secret') return null; // Hide the secret letter from the main list
+          return (
+            <motion.div
+              key={key}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
             >
-              <Mail className="w-10 h-10 text-primary/70 mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="text-lg font-display font-medium text-white/90">{env.title}</h3>
+              <button
+                onClick={() => setOpenedLetter(key as LetterKey)}
+                className="glass-card p-6 w-36 h-24 md:w-48 md:h-32 flex flex-col items-center justify-center gap-3 hover:scale-105 transition-all group border-primary/20 hover:border-primary"
+              >
+                <Mail className="w-8 h-8 text-white/50 group-hover:text-primary transition-colors" />
+                <span className="text-sm font-display text-white/80 group-hover:text-white capitalize">
+                  {key.replace(/([A-Z])/g, ' $1').trim()}
+                </span>
+              </button>
             </motion.div>
+          );
+        })}
+
+        {/* Secret Letter Quest Item */}
+        {!secretLetterFound && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.15 }}
+            whileHover={{ opacity: 0.8, scale: 1.1 }}
+            className="absolute -bottom-16 -right-4 md:-bottom-24 md:-right-12 cursor-pointer z-50 p-4"
+            onClick={() => {
+              findSecretLetter();
+              unlockMessage("Achievement Unlocked: The Missing Letter ✉️");
+              setOpenedLetter("secret" as LetterKey);
+            }}
+          >
+            <Mail className="w-6 h-6 text-primary drop-shadow-[0_0_10px_rgba(255,110,199,0.8)]" />
           </motion.div>
-        ))}
+        )}
       </div>
 
       {/* Opened Letter Modal */}

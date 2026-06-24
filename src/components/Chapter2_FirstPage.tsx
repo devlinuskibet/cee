@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { images } from '../resources/images';
+import { HiddenHeart } from './HiddenHeart';
 
 export const Chapter2_FirstPage: React.FC = () => {
   const { scrollYProgress } = useScroll();
@@ -12,6 +13,7 @@ export const Chapter2_FirstPage: React.FC = () => {
       style={{ scale, opacity }}
       className="min-h-screen flex items-center justify-center p-4 py-24 relative"
     >
+      <HiddenHeart className="top-10 left-10 md:top-32 md:left-32" />
       <div className="w-full max-w-4xl glass-card p-6 md:p-12 flex flex-col md:flex-row gap-8 items-center">
         <div className="flex-1 space-y-6">
           <p className="text-primary/80 uppercase tracking-[0.3em] text-xs font-bold">Chapter 2</p>

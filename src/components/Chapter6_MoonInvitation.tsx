@@ -10,7 +10,7 @@ export const Chapter6_MoonInvitation: React.FC = () => {
   const glowOpacity = useTransform(scrollYProgress, [0.4, 0.5], [0, 1]);
 
   const [accepted, setAccepted] = useState(false);
-  const { unlockMessage } = useGameStore();
+  const { unlockMessage, incrementMoonClicks, moonClicks } = useGameStore();
 
   const handleAccept = () => {
     setAccepted(true);
@@ -27,6 +27,15 @@ export const Chapter6_MoonInvitation: React.FC = () => {
       >
         <Moon className="w-full h-full text-gray-200 opacity-20 absolute" />
         
+        {/* Click Handler Overlay */}
+        <div 
+          className="absolute inset-0 cursor-pointer z-20"
+          onClick={() => {
+            incrementMoonClicks();
+            if (moonClicks === 9) unlockMessage("Achievement Unlocked: Moon Gazer 🌕");
+          }}
+        />
+
         {/* Glow overlay */}
         <motion.div 
           style={{ opacity: glowOpacity }}

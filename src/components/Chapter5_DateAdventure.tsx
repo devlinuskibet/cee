@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { HiddenHeart } from './HiddenHeart';
 
 const dateIdeas = [
   "Moonlight walk",
@@ -45,6 +46,7 @@ export const Chapter5_DateAdventure: React.FC = () => {
 
   return (
     <div className="min-h-screen py-24 px-4 flex flex-col items-center justify-center relative overflow-hidden">
+      <HiddenHeart className="bottom-20 right-10 md:bottom-32 md:right-32" />
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

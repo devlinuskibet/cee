@@ -235,6 +235,21 @@ That should help.
 
 Mission accomplished.
 
+❤️`,
+
+  secret: `Hey Cee,
+
+If you found this letter... you are incredibly observant.
+
+I hid this here just to see if you'd explore every corner of this little world I built for you.
+
+And of course, you did.
+
+You always pay attention to the little things. It's one of the millions of reasons I love you.
+
+Thank you for exploring this journey, and for being the best part of mine.
+
+I love you.
 ❤️`
 };
 
