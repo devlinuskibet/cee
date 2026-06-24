@@ -57,22 +57,27 @@ function App() {
   }
 
   return (
-    <div className="bg-[#0f172a] min-h-screen text-white font-sans overflow-x-hidden relative selection:bg-primary/30 selection:text-white">
+    <div 
+      className="bg-[#0f172a] min-h-screen text-white font-sans overflow-x-hidden relative selection:bg-primary/30 selection:text-white"
+      onClick={() => {
+        // Star Catcher Logic - 15% chance to find a star when clicking anywhere!
+        if (Math.random() > 0.85) {
+          const state = useGameStore.getState();
+          if (state.starsFound < 5) {
+            state.incrementStarsFound();
+            if (state.starsFound === 4) {
+              state.unlockMessage("Achievement Unlocked: Star Catcher ⭐");
+            } else {
+              state.unlockMessage(`You caught a shooting star! (${state.starsFound + 1}/5)`);
+            }
+          }
+        }
+      }}
+    >
       {/* Background Ambience */}
-      <div className="aurora-bg" />
+      <div className="aurora-bg pointer-events-none" />
       <MouseGlow />
       <MusicController />
-
-      {/* Secret click layer for finding hidden stars randomly */}
-      <div 
-        className="fixed inset-0 z-[-1]" 
-        onClick={() => {
-          if (Math.random() > 0.95) {
-            incrementStarsFound();
-            useGameStore.getState().unlockMessage(shortMessages[0]); // You found a secret
-          }
-        }}
-      />
 
       {/* Toast Notification for Achievements & Easter Eggs */}
       <AnimatePresence>
