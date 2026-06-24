@@ -22,7 +22,7 @@ import { shortMessages } from './resources/content';
 function App() {
   const [gateUnlocked, setGateUnlocked] = useState(false);
   const [toastMsg, setToastMsg] = useState<string | null>(null);
-  const { unlockedMessages, incrementStarsFound } = useGameStore();
+  const { unlockedMessages } = useGameStore();
 
   // Handle Easter Egg Toast Messages
   useEffect(() => {

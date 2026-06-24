@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { openWhenLetters } from '../resources/content';
 import { Mail, X, Heart } from 'lucide-react';
 import { useGameStore } from '../store/useGameStore';
+import { HiddenHeart } from './HiddenHeart';
 
 type LetterKey = keyof typeof openWhenLetters;
 
@@ -11,8 +12,9 @@ export const Chapter8_OpenWhen: React.FC = () => {
   const { secretLetterFound, unlockMessage, findSecretLetter } = useGameStore();
 
   return (
-    <div className="w-full min-h-screen py-24 px-4 flex flex-col items-center justify-center">
-      <div className="text-center mb-16 z-10">
+    <div className="w-full min-h-screen py-24 px-4 flex flex-col items-center justify-center relative">
+      <HiddenHeart className="top-32 right-10 md:top-40 md:right-32" />
+      <div className="text-center mb-16 z-10 max-w-3xl">
         <p className="text-primary/80 uppercase tracking-[0.3em] text-xs font-bold mb-2">Chapter 8</p>
         <h2 className="text-4xl md:text-5xl font-display font-bold text-gradient mb-4">Open When...</h2>
         <p className="text-white/60">Sealed glass envelopes for when you need them most.</p>

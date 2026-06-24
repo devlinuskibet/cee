@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { reasons100 } from '../resources/content';
 import { X } from 'lucide-react';
+import { HiddenHeart } from './HiddenHeart';
 
 export const Chapter7_100Reasons: React.FC = () => {
   const [activeReason, setActiveReason] = useState<{ id: number, text: string } | null>(null);
@@ -12,6 +13,7 @@ export const Chapter7_100Reasons: React.FC = () => {
 
   return (
     <div className="min-h-screen py-24 px-4 relative flex flex-col items-center">
+      <HiddenHeart className="top-20 left-10 md:top-32 md:left-32" />
       <div className="text-center mb-16 z-10">
         <p className="text-primary/80 uppercase tracking-[0.3em] text-xs font-bold mb-2">Chapter 7</p>
         <h2 className="text-4xl md:text-5xl font-display font-bold text-gradient mb-4">100 Reasons I Love You</h2>

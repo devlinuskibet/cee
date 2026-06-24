@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, Unlock } from 'lucide-react';
 import { cn } from '../utils/cn';
+import { HiddenHeart } from './HiddenHeart';
+import { useGameStore } from '../store/useGameStore';
 
 interface Props {
   onUnlock: () => void;
@@ -11,12 +13,14 @@ export const Chapter1_MagicGate: React.FC<Props> = ({ onUnlock }) => {
   const [answer, setAnswer] = useState('');
   const [error, setError] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
+  const { unlockMessage } = useGameStore();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (answer.trim().toLowerCase() === 'cee') {
       setUnlocked(true);
       setError(false);
+      unlockMessage("Welcome my love ❤️");
       setTimeout(() => onUnlock(), 3000);
     } else {
       setError(true);
@@ -26,6 +30,8 @@ export const Chapter1_MagicGate: React.FC<Props> = ({ onUnlock }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0f172a]">
+      <HiddenHeart className="bottom-10 left-10 md:bottom-20 md:left-20" />
+      
       {/* Starry background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(50)].map((_, i) => (
