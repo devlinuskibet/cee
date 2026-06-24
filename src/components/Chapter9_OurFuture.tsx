@@ -24,7 +24,8 @@ export const Chapter9_OurFuture: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen py-24 px-4 flex flex-col items-center justify-center">
+    <div className="min-h-screen py-24 px-4 flex flex-col items-center justify-center relative">
+      <HiddenHeart className="top-40 right-10 md:top-60 md:right-32" />
       <div className="text-center mb-16 z-10 w-full max-w-3xl">
         <p className="text-primary/80 uppercase tracking-[0.3em] text-xs font-bold mb-2">Chapter 9</p>
         <h2 className="text-4xl md:text-5xl font-display font-bold text-gradient mb-6">Our Future</h2>
